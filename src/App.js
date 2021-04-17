@@ -14,6 +14,11 @@ function App() {
     absenTiga: "Lutfi",
   });
 
+  const [nameCard, setNameCard] = useState({
+    cardFrontend: "PTP Frontend 123",
+    cardUI: "PTP UI 123",
+  });
+
   // sesuatu didalam return disebut jsx
   return (
     <div className="App">
@@ -32,12 +37,12 @@ function App() {
       />
 
       <Card
-        judul="PTP Frontend"
+        judul={nameCard.cardFrontend}
         description="Course tentang pelajaran frontend"
       />
 
       <Card
-        judul="PTP UI UX"
+        judul={nameCard.cardUI}
         description="Course tentang pelajaran UI dan UX"
       />
       {/* <CardUIUX /> */}
