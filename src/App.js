@@ -14,6 +14,10 @@ import Card from "./components/Card/Card";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Gallery from "./pages/Gallery";
+import Profile from "./pages/Profile";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   //cara membuat state dalam react
@@ -44,12 +48,29 @@ function App() {
               <li>
                 <Link to="/contact">Contact</Link>
               </li>
+              <li>
+                <Link to="/gallery">Gallery</Link>
+              </li>
+              <li>
+                <Link to="/profile">Profile</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/register">Register</Link>
+              </li>
             </ul>
           </nav>
         </header>
 
         <Switch>
           <Route exact path="/"> <Home /> </Route>
+          <Route path="/register"> <Register /> </Route>
+          <Route path="/profile"> <Profile /> </Route>
+          <Route path="/gallery"> <Gallery /> </Route>
+          <Route path="/login"> <Login /> </Route>
+          {/* put this route ALWAYS at the end to avoid useParams called first*/}
           <Route path="/:id"> <About /> </Route>
           <Route path="/:id"> <Contact /> </Route>
         </Switch>
