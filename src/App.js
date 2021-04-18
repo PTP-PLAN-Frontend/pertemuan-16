@@ -18,19 +18,19 @@ import Gallery from "./pages/Gallery";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
-  //cara membuat state dalam react
-  const [nameUser, setNameUser] = useState({
-    absenSatu: "Skilvul",
-    absenDua: "Thoriq",
-    absenTiga: "Lutfi",
-  });
+  // to handle private route
+  const [auth, setAuth] = useState(false);
 
-  const [nameCard, setNameCard] = useState({
-    cardFrontend: "PTP Frontend 123",
-    cardUI: "PTP UI 123",
-  });
+  const handleLogin = () => {
+    setAuth(true);
+  }
+
+  const handleLogout = () => {
+    setAuth(false);
+  }
 
   // sesuatu didalam return disebut jsx
   return (
@@ -67,9 +67,9 @@ function App() {
         <Switch>
           <Route exact path="/"> <Home /> </Route>
           <Route path="/register"> <Register /> </Route>
-          <Route path="/profile"> <Profile /> </Route>
+          <PrivateRoute path="/profile" auth={auth}> <Profile handleLogout={handleLogout} /> </PrivateRoute>
           <Route path="/gallery"> <Gallery /> </Route>
-          <Route path="/login"> <Login /> </Route>
+          <Route path="/login"> <Login handleLogin={handleLogin} /> </Route>
           {/* put this route ALWAYS at the end to avoid useParams called first*/}
           <Route path="/:id"> <About /> </Route>
           <Route path="/:id"> <Contact /> </Route>

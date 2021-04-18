@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function Profile() {
+export default function Profile(props) {
   return (
     <div>
-      Home
+      Profile Page
+      <button onClick={props.handleLogout}>Logout</button>
     </div>
   )
 }
